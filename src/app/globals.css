@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --foreground-rgb: 28, 25, 23; /* Dark Stone */
+  --background-rgb: 255, 253, 250; /* Soft Ivory */
+}
+
+/* Base resets */
+html, body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden; 
+  width: 100%;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+/* --- SCROLLBAR LOGIC --- */
+
+/* 1. Hide scrollbars everywhere by default on mobile/touch devices */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
+/* 2. Apply Custom Gold Scrollbar ONLY for Desktop (Laptops and up) */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1c1917;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #D4AF37, #AF8A2C);
+    border-radius: 10px;
+    border: 2px solid #1c1917;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f1c40f;
+  }
+  
+  /* Firefox Scrollbar for Desktop */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #D4AF37 #1c1917;
+  }
+}
+
+/* 3. Force hide scrollbars on mobile specifically if they still appear */
+@media (max-width: 1023px) {
+  ::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+  }
+  * {
+    scrollbar-width: none !important;
+  }
+}
+
+/* --- REST OF YOUR CSS --- */
+
+.text-gold { color: #AF9164; }
+.bg-gold { background-color: #AF9164; }
+
+@keyframes ring {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(20deg); }
+  75% { transform: rotate(-20deg); }
+}
+
+.group-hover\:animate-ring {
+  animation: ring 0.5s ease-in-out infinite;
+}
