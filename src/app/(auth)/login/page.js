@@ -2,57 +2,70 @@
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import Link from 'next/link';
-import { useState } from 'react';
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from 'react';
+import { signIn, useSession } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const { data: session } = useSession();
+
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    email: "",
+    password: "",
   });
 
-  const handleSubmit = async (e) => {
+  // If already logged in, redirect automatically
+  useEffect(() => {
+    if (session?.user) {
+      router.push("/");
+    }
+  }, [session, router]);
 
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     const res = await signIn("credentials", {
       email: formData.email,
       password: formData.password,
-      redirect: false, // We handle redirect manually
+      redirect: false,
     });
 
-    if (res.error) {
+    if (res?.error) {
       toast.error("Invalid Credentials");
-      console.log(res.error);
-    } else {
-      // 1. Get the session to check the role
-      const sessionRes = await fetch('/api/auth/session');
-      const session = await sessionRes.json();
+      setLoading(false);
+      return;
+    }
 
-      toast.success(`Welcome, ${session.user.name}`);
+    toast.success("Login Successful!");
 
-      // 2. Redirect based on role
-      if (session.user.role === "admin") {
+    // 🔥 Get updated session
+    const sessionRes = await fetch("/api/auth/session");
+    const session = await sessionRes.json();
+
+    setTimeout(() => {
+      if (session?.user?.role === "admin") {
         router.push("/admin");
       } else {
         router.push("/");
       }
+
       router.refresh();
-    }
+    }, 300);
+
     setLoading(false);
   };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6">
@@ -89,7 +102,7 @@ export default function LoginPage() {
           <div className="space-y-1">
             <div className="flex justify-between items-center">
               <label className="text-[10px] uppercase tracking-widest text-stone-500 font-bold">Password</label>
-              
+
               <Link
                 href="/forgot-password"
                 className="text-[10px] uppercase tracking-widest text-stone-400 hover:text-amber-400 hover:font-bold transition-colors"
