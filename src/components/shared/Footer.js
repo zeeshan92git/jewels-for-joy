@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { BellRing } from 'lucide-react';
 
 export default function Footer() {
-  const categories = ['Rings', 'Necklaces', 'Bangles', 'Lockets', 'Bracelets'];
+  const categories = ['Rings', 'Necklaces', 'Pendants', 'Chains', 'Bracelets'];
 
   const customerCare = [
     { name: 'About Us', link: '/about' },

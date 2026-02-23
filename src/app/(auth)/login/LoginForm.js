@@ -57,7 +57,7 @@ export default function LoginPage() {
       }
 
       router.refresh();
-    }, 300);
+    }, 200);
 
     setLoading(false);
   };

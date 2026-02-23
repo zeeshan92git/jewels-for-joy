@@ -107,9 +107,9 @@ export default function CheckoutPage() {
               <div className="mt-6 p-6 bg-stone-900 rounded-3xl text-white shadow-2xl transition-all animate-in fade-in slide-in-from-top-4">
                 <h4 className="font-serif text-lg text-gold mb-4">Bank Account Details</h4>
                 <div className="space-y-3 text-xs md:text-sm font-light opacity-90 tracking-wide">
-                  <div className="flex justify-between border-b border-white/10 pb-2"><span>Bank</span> <span className="font-bold">Meezan Bank</span></div>
-                  <div className="flex justify-between border-b border-white/10 pb-2"><span>Title</span> <span className="font-bold uppercase tracking-tight">Ashal Yousaf</span></div>
-                  <div className="flex justify-between border-b border-white/10 pb-2"><span>Account</span> <span className="font-bold tracking-widest">04260105184492</span></div>
+                  <div className="flex justify-between border-b border-white/10 pb-2"><span>Bank Name</span> <span className="font-bold">MEEZAN BANK</span></div>
+                  <div className="flex justify-between border-b border-white/10 pb-2"><span>Account Title</span> <span className="font-bold uppercase tracking-tight">MUHAMMAD ALAM</span></div>
+                  <div className="flex justify-between border-b border-white/10 pb-2"><span>Account Number</span> <span className="font-bold tracking-widest">08040112163797</span></div>
                 </div>
                 <div className="mt-6">
                   <p className="text-[9px] uppercase tracking-[0.2em] text-gold font-bold mb-3">Proof of Payment</p>

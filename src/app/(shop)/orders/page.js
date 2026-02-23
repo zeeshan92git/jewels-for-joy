@@ -69,7 +69,7 @@ export default function OrderHistoryPage() {
 
       <div className="space-y-6">
         {orders.map((order) => (
-          <div key={order._id} className="bg-white border border-stone-200 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-md transition-all duration-500">
+          <div key={order._id} className="bg-white border border-stone-200 rounded-4xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-500">
 
             {/* Main Details Panel */}
             <div className="p-6 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -107,7 +107,7 @@ export default function OrderHistoryPage() {
 
               <div className="flex items-start gap-4 flex-1 w-full">
                 {/* Status-based Content */}
-                <div className="flex-shrink-0 mt-1">
+                <div className="shrink-0 mt-1">
                   {order.status === 'Verified' ? <CheckCircle size={18} className="text-blue-700" /> :
                    order.status === 'Delivered' ? <Package size={18} className="text-green-700" /> :
                    order.status === 'Cancelled' ? <XCircle size={18} className="text-red-700" /> :

@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 
 export default function FloatingWhatsApp() {
     const { data: session } = useSession();
-    const whatsappNumber = "923345005258";
+    const whatsappNumber = "923151181090";
     const message = encodeURIComponent("Hi Jewels for Joy! I'm interested in your jewellery collection. Can you help me?");
 
     // Hide if user is an Admin

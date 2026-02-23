@@ -19,7 +19,7 @@ export default function ContactPage() {
         body: JSON.stringify(data),
       });
       if (res.ok) {
-        toast.success('Message sent! We will contact you soon.');
+        toast.success('Message sent! Check your email.');
         e.target.reset();
       } else {
         toast.error('Failed to send message. Please try again.');
