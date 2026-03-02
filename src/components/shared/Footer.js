@@ -44,7 +44,7 @@ export default function Footer() {
             </p>
 
             <a
-              href="https://whatsapp.com/..."
+              href="https://whatsapp.com/channel/0029Vb7i5nnCxoAnBcJZf23K"
               className="inline-flex items-center justify-center gap-2 bg-green-600 text-white px-5 py-3 rounded-full text-[10px] font-bold uppercase w-full sm:w-auto transition-transform active:scale-95"
             >
               <BellRing size={14} />

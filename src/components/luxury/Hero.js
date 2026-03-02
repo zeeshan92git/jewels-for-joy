@@ -34,7 +34,7 @@ export default function Hero() {
         </p>
 
         <Link
-          href="/shop"
+          href="/"
           className="group relative border border-white/30 bg-white/10 px-8 md:px-12 py-3 md:py-4 text-[10px] md:text-xs uppercase tracking-widest text-gold font-semibold transition-all hover:bg-white hover:text-black backdrop-blur-md active:scale-95"
         >
           Shop the Collection
